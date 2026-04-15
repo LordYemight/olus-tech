@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0a192f;
+  --secondary: #ffffff;
+  --accent: #00f3ff;
+}
+
+html { scroll-behavior: smooth; }
+body { 
+  overflow-x: hidden; 
+  font-family: var(--font-body); 
+  background: var(--primary); 
+  color: white; 
+}
+h1,h2,h3,h4 { font-family: var(--font-heading); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes slide-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+
+.animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
+.animate-slideUp { animation: slideUp 0.8s ease-out forwards; }
+.animate-scaleIn { animation: scaleIn 0.5s ease-out forwards; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-slide-left { animation: slide-left 40s linear infinite; }
+
+.scanline-effect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  opacity: 0.05;
+  height: 20%;
+  width: 100%;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
